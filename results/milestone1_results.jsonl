@@ -1,10 +1,50 @@
 {"id": 0, "response": "\\boxed{105950}"}
 {"id": 1, "response": "\\boxed{A}"}
-{"id": 2, "response": "\\boxed{[ANS]Fahrenheit, \"soprobablyadec\\im^{1}al?Wait, butmaybeit'sanicenumber?Wait, let'scheckwithcalculatorstepscarefully.First, (8/11)^(3/2).Let'scompute(8/11)^1.5first.8/11isapprox\\im^{1}ately0.7272727.Let'ssquarerootthatfirst:\\sqrt{8/11}\u2248\\sqrt{0.7272727}\u22480.8528.Thenmultiplyby8/11:0.8528*0.7272727\u2248let'ssee, 0.85*0.727\u22480.61795, soapprox\\im^{1}ately0.618?Wait, maybebettertodoexactfractionsstepbystep.Wait, 1296, 1369, so\\sqrt{1331}\u224836.48.Then22.627/36.48\u22480.619.Hmm, 75+68.09\u2248143.09.Wait, istha\\tr^{1}ight?Let'scheckwithanothermethodtobesure.Alternatively, let'ssolveforknumericallyfirst, thencomputeT(0.75).Let's\\tr^{1}ythat.Fromearlier, 1.375, \\ln^{1}(1.375)\u22480.31845(\\sin^{1}cee^0.3\u22481.3499,e^0.32\u22481.377,yes,so\\ln^{1}(1.375)\u22480.31845).Thenk\u22482*0.31845\u22480.6369perhour.Now, computeT(0.75)=75+110e^(-0.6369*0.75).Firstcompute\\exp^{1}onent:0.6369*0.75\u22480.4777.Thene^(-0.4777)\u2248?e^-0.4\u22480.6703, e^-0.5\u22480.6065, so0.4777iscloseto0.5, 75+110*e^(-0.6369}"}
+{"id": 2, "response": "\\boxed{60, 2.3}"}
 {"id": 3, "response": "\\boxed{\\frac{5}{8}}"}
 {"id": 4, "response": "\\boxed{Y}"}
 {"id": 5, "response": "\\boxed{62.78, 335.93, 604.67}"}
 {"id": 6, "response": "\\boxed{G, B}"}
 {"id": 7, "response": "\\boxed{\\frac{13}{9}}"}
-{"id": 8, "response": "\\boxed{31}"}
+{"id": 8, "response": "\\boxed{0.4471}"}
 {"id": 9, "response": "\\boxed{A}"}
+{"id": 10, "response": "\\boxed{M}"}
+{"id": 11, "response": "\\boxed{X}"}
+{"id": 12, "response": "\\boxed{380, 315, 14, 310}"}
+{"id": 13, "response": "\\boxed{S}"}
+{"id": 14, "response": "\\boxed{X}"}
+{"id": 15, "response": "\\boxed{B, C, A}"}
+{"id": 16, "response": "\\boxed{3}"}
+{"id": 17, "response": "\\boxed{16x, 16x}"}
+{"id": 18, "response": "\\boxed{I}"}
+{"id": 19, "response": "\\boxed{X}"}
+{"id": 20, "response": "\\boxed{7.7}"}
+{"id": 21, "response": "\\boxed{3*t*(1-t)^2, 6*t^2*(1-t)^2, 10*t^3*(1-t)^2, 7*t^6*(1-t), 70*t^4*(1-t)^4}"}
+{"id": 22, "response": "\\boxed{0.16, 16, 1, 16, 1, 1}"}
+{"id": 23, "response": "\\boxed{B, A, B, A}"}
+{"id": 24, "response": "\\boxed{S}"}
+{"id": 25, "response": "\\boxed{3, 7}"}
+{"id": 26, "response": "\\boxed{625L}"}
+{"id": 27, "response": "\\boxed{1}"}
+{"id": 28, "response": "\\boxed{144}"}
+{"id": 29, "response": "\\boxed{442.86, 332.14}"}
+{"id": 30, "response": "\\boxed{3.03, 0.09, B, 5.05, 0.031, A, 0.58, 0.452, B}"}
+{"id": 31, "response": "\\boxed{K, I, J, F, B, H}"}
+{"id": 32, "response": "\\boxed{7091.67}"}
+{"id": 33, "response": "\\boxed{C}"}
+{"id": 34, "response": "\\boxed{504/(11*\\pi)}"}
+{"id": 35, "response": "\\boxed{2010}"}
+{"id": 36, "response": "\\boxed{\\frac{\\pi}{3}, 0.7}"}
+{"id": 37, "response": "\\boxed{1}"}
+{"id": 38, "response": "\\boxed{1250, 875}"}
+{"id": 39, "response": "\\boxed{2.3}"}
+{"id": 40, "response": "\\boxed{4, 3, 1, 3}"}
+{"id": 41, "response": "\\boxed{27, 64, 95}"}
+{"id": 42, "response": "\\boxed{S}"}
+{"id": 43, "response": "\\boxed{(-7-\\sqrt{41})/2, (-7+\\sqrt{41})/2}"}
+{"id": 44, "response": "\\boxed{(-1,-3), 3*sqrt{(}10)/10}"}
+{"id": 45, "response": "\\boxed{C}"}
+{"id": 46, "response": "\\boxed{429.804, 1012.555}"}
+{"id": 47, "response": "\\boxed{9}"}
+{"id": 48, "response": "\\boxed{U}"}
+{"id": 49, "response": "\\boxed{3k+9Ju, u}"}
