@@ -59,8 +59,7 @@ class Judger:
         final_answer = re.sub(r'(\\textbf\{)(.*?)(\})', '\\2', final_answer)
         final_answer = re.sub(
             r'(frac)([^{])(.)', 'frac{\\2}{\\3}', final_answer)
-        final_answer = re.sub(
-            r'(sqrt)([^{])', 'sqrt{\\2}', final_answer)
+        final_answer = fix_sqrt(final_answer)
         final_answer = final_answer.strip()
         final_answer = final_answer.strip("$")
         final_answer = final_answer.strip()
@@ -94,12 +93,12 @@ class Judger:
             # remove impropriate trailing punctuations
             ans_item = self.clean(ans_item)
 
-            # bool
-            if ans_type == "TF":
-                ans_bool = norm_str2bool(ans_item)
-                if ans_bool is not None:
-                    new_ans_list.append(str(ans_bool))
-                    continue
+            # bool — always check before math normalization to avoid
+            # mangling words like "true" (where "tr" matches a function name)
+            ans_bool = norm_str2bool(ans_item)
+            if ans_bool is not None:
+                new_ans_list.append(str(ans_bool))
+                continue
 
             # weekdays
             ans_weekday = norm_str2weekday(ans_item)
@@ -212,20 +211,19 @@ class Judger:
         return pfx + sfx
 
     def norm_basic_fn(self, s: str) -> str:
-        """Avoid potential LaTex errors caused by removing spaces:
-        - \\{fn}[a-z] : followed by some letter without middle spaces
-        - \\{fn}^{pow}{expr}
+        """Normalize basic function expressions to \\{fn}^{pow} form.
 
-        Returns
-        -------
-        str
-            Normalized format of basic function expression: \\{fn}^{{pow}}{{expr}}
+        Handles bare and backslashed function names, adding ^{1} when no power
+        is present. Uses negative lookbehind so 'tan' inside 'arctan' is not
+        matched separately.
         """
-        # \2 matches \d+ without {} around, if there has been {}, there is no need to normalize
-        # Existing nude power, i.e. ^<pow_d+>
-        s = re.sub(rf"\\?({'|'.join(BASIC_FN_NAMES)})\^(\d+)", r"\\\1^{\2}", s)
-        # No power
-        s = re.sub(rf"\\?({'|'.join(BASIC_FN_NAMES)})(?!\^)", r"\\\1^{1}", s)
+        fn_pattern = '|'.join(BASIC_FN_NAMES)
+        # Normalize existing nude power: fn^2 -> \\fn^{2}
+        s = re.sub(rf"(?<![a-z])\\?({fn_pattern})\^(\d+)", r"\\\1^{\2}", s)
+        # Add ^{1} for functions without power (keeps normalization consistent)
+        s = re.sub(rf"(?<![a-z])\\?({fn_pattern})(?!\^)", r"\\\1^{1}", s)
+        # Remove redundant ^{1} which can confuse some LaTeX parsers
+        s = re.sub(rf"(\\(?:{'|'.join(BASIC_FN_NAMES)}))\^\{{1\}}", r"\1", s)
         return s
 
 
@@ -278,12 +276,17 @@ class Judger:
         for env in LATEX_FMT_ENVS + LATEX_LIST_ENVS:
             string = rm_latex_env(string, env)
 
+        # Convert ^[...] to ^{...} so parse_latex can handle bracket exponents
+        string = re.sub(r'\^\[([^\]]*)\]', r'^{\1}', string)
+
         # Normalize local expressions
         string = norm_deg(string)  # Normalize degrees
         # convert inverse functions
         string = fix_inv_func(string)
+        # Add backslashes to bare function names, but skip arc-prefixed functions
+        # that are already correctly backslashed by fix_inv_func
         string = re.sub(
-            rf"(?<!\\)(pi\b|{'|'.join(BASIC_FN_NAMES)})", r"\\\1", string
+            rf"(?<!\\)(?<!arc)(pi\b|{'|'.join(BASIC_FN_NAMES)})", r"\\\1", string
         )  # Fix backslashes
         string = self.norm_basic_fn(string)  # Normalize basic functions
 
