@@ -59,7 +59,7 @@ from collections import Counter
 
 # %%
 #check what gpu you have and gpu id number
-!nvidia-smi
+#!nvidia-smi
 
 # %% [markdown]
 # ## 3. Load the Dataset
