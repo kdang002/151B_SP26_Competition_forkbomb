@@ -5,7 +5,7 @@
 
 *   **GPU:** NVIDIA L40S
 *   **Total Inference Time:** Approximately 12 hours to generate results for the private dataset.
-*   result is already in `results` folder. 
+*   The result we ran 12 hours outside of school server is already in `results` folder `results\submission.csv` `result\starter_results.jsonl`. 
 
 ## Setup
 
